@@ -146,6 +146,8 @@ const HttpError = require('../DbTablesSchema/httpError');
      }catch(er){
       next (new HttpError((er),244));
      }
+     if(!resp)
+      res.status(400).json({message:"No Data found"});
     res.status(200).json(resp);
   }
 
@@ -158,13 +160,15 @@ const HttpError = require('../DbTablesSchema/httpError');
 
     try{
       selectedHeader = await Service.find({topLine:header});
-      console.log(selectedHeader.length + ' selected Header ');
+      // console.log(selectedHeader.length + ' selected Header ');
 
     }catch(er) {
       next (new HttpError((e),244));
     }
 
-    console.log(selectedHeader);
+    if(!selectedHeader)
+      res.status(400).json({message:"No Data found"});
+    // console.log(selectedHeader);
     res.status(200).json(selectedHeader);
   }
   

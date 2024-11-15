@@ -1,9 +1,7 @@
 
 const {MongoClient, ServerApiVersion} = require('mongodb');
-
- const uri = "mongodb+srv://murutestdb:Muru_1998@muru.ypd86.mongodb.net/EzhilElit?retryWrites=true&w=majority&appName=EzhilElit";
-
-const client = new MongoClient(uri,{
+ const datas =process.env.MONGO_URI;
+const client = new MongoClient(datas,{
     serverApi:{
         version:ServerApiVersion.v1,
         strict:true,

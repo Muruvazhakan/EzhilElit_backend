@@ -1,9 +1,11 @@
 const express = require('express');
 const bodypase = require('body-parser');
 const app=express();
-const PORT = 4000;
+const port = process.env.PORT || 4000;
 const cors= require('cors');
 
+const dotenv = require("dotenv").config();
+const datas =process.env.MONGO_URI;
 const mainRoute = require('./Routes/mainRoute');
 const { default: mongoose } = require('mongoose');
 
@@ -18,10 +20,10 @@ app.use((req,res,next) =>{
 
 app.use('/',mainRoute);
 
-mongoose.connect('mongodb+srv://murutestdb:Muru_1998@muru.ypd86.mongodb.net/EzhilElit?retryWrites=true&w=majority&appName=EzhilElit')
+mongoose.connect(datas)
 .then(() =>{
-    app.listen(PORT, () =>{
-        console.log("Server Running in "+ PORT);
+    app.listen(port, () =>{
+        console.log("Server Running in "+ port);
     });
 }).catch( err =>{
     console.log(err);
