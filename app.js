@@ -1,5 +1,5 @@
 const express = require('express');
-const bodypase = require('body-parser');
+const bodyParser = require('body-parser');
 const app=express();
 const port = process.env.PORT || 4000;
 const cors= require('cors');
@@ -9,7 +9,7 @@ const datas =process.env.MONGO_URI;
 const mainRoute = require('./Routes/mainRoute');
 const { default: mongoose } = require('mongoose');
 
-app.use(bodypase());
+app.use(bodyParser.json());
 app.use(cors());
 app.use((req,res,next) =>{
     res.header("Access-Control-Allow-Origin", "*");
