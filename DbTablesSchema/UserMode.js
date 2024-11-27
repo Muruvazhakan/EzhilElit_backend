@@ -1,16 +1,12 @@
 const mongooes = require("mongoose");
 
-const uniquevalidator = require("mongoose-unique-validator");
-
 const schema = mongooes.Schema;
 
 const userSchema = new schema({
     name:{type:String, require:true},
-    mailid:{type:String, require:true, unique: true},
-    password:{type:String, require:true, minlength:6},
-    image:{type:String, require:false},
-
+    emailid:{type:String, require:true},
+    mobile:{type:String, require:true},
+    password:{type:String, require:true},
 });
 
-userSchema.plugin(uniquevalidator);
 module.exports = mongooes.model('User',userSchema);

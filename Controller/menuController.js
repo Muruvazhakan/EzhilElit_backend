@@ -36,6 +36,13 @@ const MenuItem =[
       display:'menu',
       user_display:1
     },
+    {
+        title:'Blog',
+        url:'blog',
+        cName:'nav-link',
+        display:'menu',
+        user_display:1
+    },
   ];
 
   const getMenuData = (req,res,next) =>{
